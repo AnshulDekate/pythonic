@@ -14,7 +14,7 @@ class Row(object) :
     def __len__(self):
         return self.sz
 
-def main():
+if __name__=="__main__":
     obj = Row("a", "b", "c")
     print("first ", obj.first)
     print("length ", len(obj))
@@ -22,8 +22,4 @@ def main():
         print(obj.fifth)
     except AttributeError:
         print("got attribute error")
-
-
-if __name__=="__main__":
-    main()
 
