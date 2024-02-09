@@ -13,17 +13,8 @@ E - 5
 R - 10
 0 - placeholder
 
-Reference:
-    1e3	1e2	 1e1  1
-1	M	C	 X	  I
-2	MM	CC	 XX	  II
-3	MMM	CCC	 XXX  III
-4		CD	 XL	  IV
-5		D	 L	  V
-6		DC	 LX	  VI
-7		DCC	 LXX  VII
-8		DCCC LXXX VIII
-9		CM	 XC	  IX
+Standard Roman System ref:
+https://en.wikipedia.org/wiki/Roman_numerals#:~:text=Individual%20decimal%20places
 '''
 
 class ZER0:
@@ -49,9 +40,10 @@ class ZER0:
     }
 
     val = ""
-    # check if initialized with valid string literal
     def __init__(self, s):
         self.val = s
+        if len(s)%4 != 0:
+            raise ValueError()
 
     def __int__(self):
         p = 1
@@ -95,6 +87,12 @@ if __name__ == "__main__":
     obj = ZER0("00EZ00ZR")
     print(obj)
     print(int(obj))
+
+    try:
+        print("00E")
+        obj = ZER0("00E")
+    except ValueError:
+        print("Invalid input")
 
     i = 45
     print(i)
